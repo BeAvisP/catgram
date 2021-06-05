@@ -14,8 +14,17 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
+            plugins: ['@babel/plugin-syntax-dynamic-import'],
             presets: ['@babel/preset-env', '@babel/preset-react'],
           },
+        },
+      },
+      // eslint-disable-next-line max-len
+      // TODO: Remove the below rule for .mjs, once aws-amplify supports webpack 5
+      {
+        test: /\.m?js/,
+        resolve: {
+          fullySpecified: false,
         },
       },
     ],
